@@ -1,0 +1,246 @@
+
+.header {
+    height: 90px;
+    width: 100%;
+    background-color: rgb(19, 19, 19);
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center;
+    gap: 100px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: .5s ease-in-out;
+}
+
+.change{
+    height: 80px;
+    background-color: black;
+    transition: .5s ease-in-out;
+}
+
+.logo {
+    width: 300px;
+    height: 60px;
+    border-radius: 15px;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav {
+    height: 60px;
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav :link {
+    text-decoration: none;
+}
+
+.nav span {
+    position: relative;
+    color: white;
+    font-size: 1pc;
+    display: flex;
+    flex-direction: column;
+    line-height: 30px;
+}
+
+.nav span::after {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 50%;
+    background-color: #1A5D1A;
+    transform: translateX(-50%);
+}
+
+.nav span:hover::after {
+    width: 100%;
+    transition: .1s linear;
+}
+
+.hiddenNavBar {
+    display: none;
+}
+
+.hiddenNav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.hiddenNavCase {
+    height: 100dvh;
+    width: 100dvw;
+    background-color: #191919;
+    display: none;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    gap: 20px;
+    position: relative;
+    padding: 20px;
+}
+
+.hiddenNav_cross {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+
+
+.hiddenNavCase :link {
+    text-decoration: none;
+}
+
+.hiddenNavCase span {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+
+.hiddenNavCase span:hover {
+    font-size: 1.7rem;
+    transition: 1s;
+    background-color: black;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+
+
+@media screen and (480px < width < 768px) {
+    .header {
+        justify-content: space-between;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .hiddenNavBar {
+        display: block;
+    }
+
+    .hiddenNavCase {
+        height: 100dvh;
+        width: 100dvw;
+        background-color: #191919;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center;
+        align-items: center; */
+        gap: 20px;
+        position: relative;
+        padding: 20px;
+    }
+
+    .hiddenNav_cross {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    .hiddenNavBar {
+        height: 100%;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hiddenNavCase :link {
+        text-decoration: none;
+    }
+
+    .hiddenNavCase span {
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .hiddenNavCase span:hover {
+        font-size: 1.7rem;
+        transition: 1s;
+        background-color: black;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+}
+@media screen and (max-width: 480px) {
+    .header {
+        justify-content: space-between;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .hiddenNavBar {
+        display: block;
+    }
+
+    .hiddenNavCase {
+        height: 100dvh;
+        width: 100dvw;
+        background-color: #191919;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center;
+        align-items: center; */
+        gap: 20px;
+        position: relative;
+        padding: 20px;
+    }
+
+    .hiddenNav_cross {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    .hiddenNavBar {
+        height: 100%;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hiddenNavCase :link {
+        text-decoration: none;
+    }
+
+    .hiddenNavCase span {
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .hiddenNavCase span:hover {
+        font-size: 1.7rem;
+        transition: 1s;
+        background-color: black;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+}

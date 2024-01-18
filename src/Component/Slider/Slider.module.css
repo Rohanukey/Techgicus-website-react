@@ -1,0 +1,44 @@
+.SlideWapper{
+    height: 80vh;
+    overflow: hidden;
+    background-color: black;
+}
+
+.slides{
+    width: auto;
+    height: 80vh;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    align-items: center;
+    justify-content: start;
+}
+
+.slide{
+    margin-left: 100px;
+    width: 90vw;
+    height: 80%;
+    /* background-color: green; */  
+   filter: brightness(50%); 
+}
+.slide:hover{
+    filter: brightness(100%); 
+    scale: 1.05;
+    transition: .1s linear;
+}
+
+
+
+/* .slide :nth-child(1){
+    background-color: red;
+} */
+
+.slide1{
+    background-image: url(/src//Assets/Main_bg2.jpg);
+}
+.slide2{
+    background-image: url(/src/Assets/Mob_app.png);
+}
+.slide3{
+    background-image: url(/src/Assets/flutter.png);
+}
