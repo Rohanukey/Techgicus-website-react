@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Css from "./Header3.module.css"
 import { Link } from 'react-router-dom'
-import logo from "/React/myapp/src/Assets/tech_logof.png"
+import logo from "../../Assets/tech_logof.png"
 import { useState, useRef } from 'react'
 
 function Header3() {

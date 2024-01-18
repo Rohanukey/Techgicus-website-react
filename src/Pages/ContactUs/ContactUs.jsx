@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ContactCss from './ContactUs.module.css'
-import img from "/React/myapp/src/Assets/tech_logof.png"
+import img from "../../Assets/tech_logof.png"
 import { motion } from "framer-motion"
 import Header3 from '../../Component/Header3/Header3'
 import Footer3 from '../../Component/Footer3/Footer3'

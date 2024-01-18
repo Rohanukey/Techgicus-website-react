@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import HddCss from "./Header2.module.css"
-import img1 from "/React/myapp/src/Assets/tech_logo.png"
+import img1 from "../../Assets/tech_logo.png"
 import { Link } from "react-router-dom";
 // import About_pg from "../About_pg/page.jsx";
 
