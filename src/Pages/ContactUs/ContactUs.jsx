@@ -3,62 +3,102 @@ import ContactCss from './ContactUsNew.module.css'
 import img from "../../Assets/tech_logof.png"
 import { motion } from "framer-motion"
 
-
 function ContactUs() {
-
     const [inputs, setInputs] = useState({
         username: '',
         email: '',
         pass: '',
         select: '',
-    })
+    });
+
+    const [errors, setErrors] = useState({
+        username: '',
+        email: '',
+        pass: '',
+        select: '',
+    });
+
+    const validateForm = () => {
+        let valid = true;
+        const newErrors = { ...errors };
+
+        if (!inputs.username.trim()) {
+            newErrors.username = 'Please enter your name';
+            valid = false;
+        } else {
+            newErrors.username = '';
+        }
+
+        if (!inputs.email.trim()) {
+            newErrors.email = 'Please enter your email';
+            valid = false;
+        } else if (!/\S+@\S+\.\S+/.test(inputs.email)) {
+            newErrors.email = 'Please enter a valid email';
+            valid = false;
+        } else {
+            newErrors.email = '';
+        }
+
+        if (!inputs.pass.trim()) {
+            newErrors.pass = 'Please enter your password';
+            valid = false;
+        } else {
+            newErrors.pass = '';
+        }
+
+        if (inputs.select === '' || inputs.select === 'Select option') {
+            newErrors.select = 'Please select your business type';
+            valid = false;
+        } else {
+            newErrors.select = '';
+        }
+
+        setErrors(newErrors);
+        return valid;
+    };
 
     const onhandleSubmit = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInputs(values => ({ ...values, [name]: value }))
-    }
-
-    const ondatasumbit = (event) => {
         event.preventDefault();
-        const pre = JSON.parse(localStorage.getItem('userInfo')) || []
-        const current = [...pre, inputs]
+        if (validateForm()) {
+            const pre = JSON.parse(localStorage.getItem('userInfo')) || [];
+            const current = [...pre, inputs];
+            localStorage.setItem("userInfo", JSON.stringify(current));
+        }
+    };
 
-
-        console.log(current)
-        localStorage.setItem("userInfo", JSON.stringify(current))
-    }
-
-    
+    const onInputChange = (event) => {
+        const { name, value } = event.target;
+        setInputs(values => ({ ...values, [name]: value }));
+    };
 
     return (
-
         <>
             <div className={ContactCss.Page}>
-                <form onSubmit={ondatasumbit}>
+                <form onSubmit={onhandleSubmit}>
                     <div className={ContactCss.case}>
-    {/*<div className={ContactCss.logo}><img src={img} /></div>*/}
                         <h1>Contact Us</h1>
                         <p>Start your free trial now and drive more sales and leads for your business from day one. (No risk. No credit card required.)</p>
                         <label htmlFor='Name'>Name: </label>
-                        <input type='text' name='username' placeholder='Enter Name' value={inputs.username} onChange={onhandleSubmit} />
+                        <input type='text' name='username' placeholder='Enter Name' value={inputs.username} onChange={onInputChange} />
+                        {errors.username && <p className="error">{errors.username}</p>}
                         <label htmlFor='Email'>Email: </label>
-                        <input type='text' name='email' placeholder='Enter Email' value={inputs.email} onChange={onhandleSubmit}></input>
+                        <input type='text' name='email' placeholder='Enter Email' value={inputs.email} onChange={onInputChange} />
+                        {errors.email && <p className="error">{errors.email}</p>}
                         <label htmlFor='Pass'>Password: </label>
-                        <input type='text' name='pass' placeholder='Enter Password' value={inputs.pass} onChange={onhandleSubmit}></input>
-                        <label htmlFor='Busi' >Business Type: </label>
-                        <select name='select' value={inputs.select} onChange={onhandleSubmit}>
+                        <input type='password' name='pass' placeholder='Enter Password' value={inputs.pass} onChange={onInputChange} />
+                        {errors.pass && <p className="error">{errors.pass}</p>}
+                        <label htmlFor='Busi'>Business Type: </label>
+                        <select name='select' value={inputs.select} onChange={onInputChange}>
                             <option>Select option</option>
-                            <option name="opt" value={"Agency"}>Agency</option>
-                            <option name="opt" value={"E-commerce"}>E-commerce</option>
-                            <option name="opt" value={"Software"}>Software</option>
-                            <option name="opt" value={"Services"}>Services</option>
-                            <option name="opt" value={"Others"}>Others</option>
+                            <option value={"Agency"}>Agency</option>
+                            <option value={"E-commerce"}>E-commerce</option>
+                            <option value={"Software"}>Software</option>
+                            <option value={"Services"}>Services</option>
+                            <option value={"Others"}>Others</option>
                         </select>
-                        <motion.button type='submit' whileHover={{ scale: 1.05 }} >Submit</motion.button>
-
+                        {errors.select && <p className="error">{errors.select}</p>}
+                        <motion.button type='submit' whileHover={{ scale: 1.05 }}>Submit</motion.button>
                     </div>
-
                 </form>
                 <div className={ContactCss.Details}>
                     <div className={ContactCss.sub_details}>
@@ -73,13 +113,10 @@ function ContactUs() {
                         <h4>AJAX (Asynchronous JavaScript and XML)</h4>
                         <h4>Web Performance Optimization</h4>
                     </div>
-
-
                 </div>
             </div>
-          
         </>
-    )
+    );
 }
 
-export default ContactUs
+export default ContactUs;
